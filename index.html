@@ -1,51 +1,106 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
- <head>
- <meta charset="utf-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1" />
- <title>1102945謝孟翰 XO 井字棋 — 雙人對戰</title>
- <link rel="stylesheet" href="styles.css">
- </head>
- 
-  <body>
-  
-<main class="container">
-<h1>XO 井字棋</h1>
-<div class="status">
-<span>目前輪到：<strong id="turn">X</strong></span>
-<span id="state"></span>
-</div>
-<section id="board" class="board" aria-label="井字棋棋盤">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1102945 - HW10</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 遊戲標題 -->
+        <header class="game-header">
+            <h1 class="game-title">
+                <span class="title-text">OTHELLO</span>
+                <span class="title-subtitle">黑白棋對弈</span>
+            </h1>
+        </header>
 
-<button class="cell" data-idx="0" ></button>
-<button class="cell" data-idx="1" ></button>
-<button class="cell" data-idx="2" ></button>
-<button class="cell" data-idx="3" ></button>
-<button class="cell" data-idx="4" ></button>
-<button class="cell" data-idx="5" ></button>
-<button class="cell" data-idx="6" ></button>
-<button class="cell" data-idx="7" ></button>
-<button class="cell" data-idx="8" ></button>
-<!-- 棋盤容器 (9 格) -->
- </section>
- 
- <!-- 計分板 -->
-<div class="scoreboard">
-<h2>計分板</h2>
-<p>X 勝場：<span id="score-x">0</span></p>
-<p>O 勝場：<span id="score-o">0</span></p>
-<p>平手次數：<span id="score-draw">0</span></p>
-</div>
-<!-- 控制按鈕 -->
-<div class="controls">
-<button id="reset">重開一局</button>
-<button id="reset-all">重置計分</button>
-</div>
+        <!-- 控制面板 -->
+        <div class="control-panel">
+            <!-- 玩家資訊 -->
+            <div class="player-info player-black">
+                <div class="player-avatar">
+                    <div class="disc disc-black"></div>
+                </div>
+                <div class="player-details">
+                    <div class="player-name">玩家</div>
+                    <div class="player-score" id="blackScore">2</div>
+                </div>
+            </div>
 
+            <!-- 中央控制區 -->
+            <div class="game-controls">
+                <div class="turn-indicator" id="turnIndicator">
+                    <span class="turn-text">輪到：玩家</span>
+                </div>
+                <button class="btn-restart" id="restartBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                        <path d="M21 3v5h-5"/>
+                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                        <path d="M3 21v-5h5"/>
+                    </svg>
+                    重新開始
+                </button>
+                <div class="difficulty-selector">
+                    <label for="difficulty">電腦難度：</label>
+                    <select id="difficulty">
+                        <option value="basic">基本棋力</option>
+                        <option value="advanced">進階棋力</option>
+                    </select>
+                </div>
+            </div>
 
-</main>
+            <!-- 電腦資訊 -->
+            <div class="player-info player-white">
+                <div class="player-details">
+                    <div class="player-name">電腦</div>
+                    <div class="player-score" id="whiteScore">2</div>
+                </div>
+                <div class="player-avatar">
+                    <div class="disc disc-white"></div>
+                </div>
+            </div>
+        </div>
 
- <script src="script.js" defer></script>
- </body>
+        <!-- 遊戲棋盤 -->
+        <div class="board-wrapper">
+            <div class="board-container">
+                <div id="board" class="board"></div>
+            </div>
+        </div>
+
+        <!-- 狀態訊息 -->
+        <div class="status-message" id="statusMessage"></div>
+
+        <!-- 遊戲說明 -->
+        <div class="game-info">
+            <p>💡 綠色格子表示可下棋位置，數字顯示可翻轉的棋子數量</p>
+            <p>🎮 玩家執黑棋先手，電腦執白棋後手</p>
+        </div>
+    </div>
+
+    <!-- 遊戲結束對話框 -->
+    <div class="modal" id="gameOverModal">
+        <div class="modal-content">
+            <h2 class="modal-title">遊戲結束</h2>
+            <div class="modal-result" id="modalResult"></div>
+            <div class="modal-scores">
+                <div class="modal-score">
+                    <div class="disc disc-black"></div>
+                    <span id="modalBlackScore">0</span>
+                </div>
+                <div class="modal-score">
+                    <div class="disc disc-white"></div>
+                    <span id="modalWhiteScore">0</span>
+                </div>
+            </div>
+            <button class="btn-modal" id="modalRestartBtn">再玩一局</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
- 
