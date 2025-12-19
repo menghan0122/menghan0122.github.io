@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1102945 - HW10</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="game-container">
-        <!-- 遊戲標題 -->
         <header class="game-header">
             <h1 class="game-title">
                 <span class="title-text">OTHELLO</span>
@@ -17,9 +16,7 @@
             </h1>
         </header>
 
-        <!-- 控制面板 -->
         <div class="control-panel">
-            <!-- 玩家資訊 -->
             <div class="player-info player-black">
                 <div class="player-avatar">
                     <div class="disc disc-black"></div>
@@ -30,7 +27,6 @@
                 </div>
             </div>
 
-            <!-- 中央控制區 -->
             <div class="game-controls">
                 <div class="turn-indicator" id="turnIndicator">
                     <span class="turn-text">輪到：玩家</span>
@@ -53,7 +49,6 @@
                 </div>
             </div>
 
-            <!-- 電腦資訊 -->
             <div class="player-info player-white">
                 <div class="player-details">
                     <div class="player-name">電腦</div>
@@ -65,24 +60,20 @@
             </div>
         </div>
 
-        <!-- 遊戲棋盤 -->
         <div class="board-wrapper">
             <div class="board-container">
                 <div id="board" class="board"></div>
             </div>
         </div>
 
-        <!-- 狀態訊息 -->
         <div class="status-message" id="statusMessage"></div>
 
-        <!-- 遊戲說明 -->
         <div class="game-info">
             <p>💡 綠色格子表示可下棋位置，數字顯示可翻轉的棋子數量</p>
             <p>🎮 玩家執黑棋先手，電腦執白棋後手</p>
         </div>
     </div>
 
-    <!-- 遊戲結束對話框 -->
     <div class="modal" id="gameOverModal">
         <div class="modal-content">
             <h2 class="modal-title">遊戲結束</h2>
